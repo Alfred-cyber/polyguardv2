@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary:   #020817;
+    --bg-secondary: #0a1628;
+    --bg-card:      #0f1f35;
+    --bg-elevated:  #162740;
+    --border:       rgba(255,255,255,0.07);
+    --border-hover: rgba(23,179,116,0.4);
+    --text-primary: #f0f6ff;
+    --text-secondary: #8da3c0;
+    --text-muted:   #4a6080;
+    --brand:        #17b374;
+    --brand-dim:    #0d9260;
+    --brand-glow:   rgba(23,179,116,0.15);
+    --critical:     #ef4444;
+    --high:         #f59e0b;
+    --medium:       #3b82f6;
+    --low:          #10b981;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: var(--brand-glow);
+    color: var(--brand);
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-primary); }
+  ::-webkit-scrollbar-thumb { background: var(--bg-elevated); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--brand-dim); }
+}
+
+@layer components {
+  .glass {
+    background: rgba(15, 31, 53, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+  }
+
+  .glass-hover {
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .glass-hover:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 20px var(--brand-glow);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #17b374 0%, #3bce8d 50%, #73e3af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .noise-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  .noise-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .risk-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .btn-primary {
+    @apply bg-brand-500 hover:bg-brand-400 text-white font-display font-semibold
+           px-6 py-3 rounded-xl transition-all duration-200 
+           hover:shadow-lg hover:shadow-brand-500/20 hover:-translate-y-0.5
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+  }
+
+  .input-field {
+    @apply w-full bg-[var(--bg-elevated)] border border-[var(--border)]
+           text-[var(--text-primary)] rounded-xl px-4 py-3
+           focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20
+           transition-all duration-200 font-body placeholder:text-[var(--text-muted)];
+  }
+
+  .card {
+    @apply rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-6;
+  }
+}
