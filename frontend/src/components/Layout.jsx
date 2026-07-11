@@ -37,7 +37,7 @@ export default function Layout() {
               <Shield size={16} className="text-white" />
             </div>
             <span className="font-display font-bold text-lg tracking-tight gradient-text">
-              PolyGuard
+              PolyPharmGuard
             </span>
           </NavLink>
 
@@ -72,10 +72,10 @@ export default function Layout() {
       <footer className="relative z-10 border-t border-[var(--border)] py-6">
         <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-[var(--text-muted)]">
-            PolyGuard © 2024 · Alfred Bartholomew Sunday · University of Greater Manchester
+            PolyPharmGuard © 2026 · Alfred Bartholomew Sunday · University of Greater Manchester
           </p>
           <p className="text-xs text-[var(--text-muted)] text-center">
-            ⚠️ For research purposes only. Not a substitute for professional medical advice.
+             For research purposes only. Not a substitute for professional medical advice.
           </p>
         </div>
       </footer>
