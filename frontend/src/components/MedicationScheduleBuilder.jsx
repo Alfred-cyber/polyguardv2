@@ -31,10 +31,10 @@ const DEFAULT_TIMES = {
 }
 
 const FOOD_OPTIONS = [
-  { value: 'any',    label: 'Any time',   icon: '🔄' },
-  { value: 'before', label: 'Before food', icon: '🍽️' },
-  { value: 'with',   label: 'With food',  icon: '🥗' },
-  { value: 'after',  label: 'After food', icon: '✅' },
+  { value: 'any',    label: 'Any time',   icon: '' },
+  { value: 'before', label: 'Before food', icon: '' },
+  { value: 'with',   label: 'With food',  icon: '' },
+  { value: 'after',  label: 'After food', icon: '' },
 ]
 
 const COMMON_INDICATIONS = [
@@ -121,7 +121,7 @@ function MedicationCard({ med, index, onChange, onRemove, showFullMode }) {
           )}
           {med.times.length > 0 && (
             <p className="text-xs text-[var(--text-muted)]">
-              🕐 {med.times.join(' · ')}
+               {med.times.join(' · ')}
             </p>
           )}
         </div>

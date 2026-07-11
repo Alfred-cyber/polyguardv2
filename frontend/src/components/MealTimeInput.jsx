@@ -37,7 +37,7 @@ export default function MealTimeInput({ meals, onChange }) {
       {Object.values(meals).every(v => !v) && (
         <div className="flex items-center gap-2 text-xs px-3 py-2 rounded-lg"
           style={{ background: 'rgba(245,158,11,0.08)', color: '#fbbf24', border: '1px solid rgba(245,158,11,0.2)' }}>
-          ℹ️ Meal times are optional but enable food-drug timing checks
+          Meal times are optional but enable food-drug timing checks
         </div>
       )}
     </div>

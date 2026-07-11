@@ -241,7 +241,7 @@ export default function Assess() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 font-display font-semibold text-sm"
               style={{ color: 'var(--brand)' }}>
-              💊 Medications
+               Medications
             </div>
             {mode === 'full' && (
               <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
@@ -280,7 +280,7 @@ export default function Assess() {
             <div className="space-y-1">
               <p className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>
                 {medications.length} medication{medications.length !== 1 ? 's' : ''}
-                {medications.length >= 5 ? ' · ⚠️ Polypharmacy threshold' : ''}
+                {medications.length >= 5 ? ' ·  Polypharmacy threshold' : ''}
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {medications.map(m => (
@@ -330,14 +330,14 @@ export default function Assess() {
             className="btn-primary flex-1 flex items-center justify-center gap-2 py-4">
             {loading
               ? <><Loader2 size={18} className="animate-spin" /> Analysing…</>
-              : <>{mode === 'full' ? '🧠 Run Full Assessment' : '⚡ Quick Check'} <ChevronRight size={16} /></>
+              : <>{mode === 'full' ? ' Run Full Assessment' : ' Quick Check'} <ChevronRight size={16} /></>
             }
           </button>
         )}
       </div>
 
       <p className="text-center text-xs text-[var(--text-muted)]">
-        ⚠️ For informational and research purposes only. Not medical advice. No data is stored.
+         For informational and research purposes only. Not medical advice. No data is stored.
       </p>
     </div>
   )
