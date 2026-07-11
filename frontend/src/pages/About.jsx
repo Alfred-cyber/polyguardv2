@@ -25,27 +25,30 @@ export default function About() {
     <div className="max-w-3xl mx-auto px-6 py-14 space-y-14">
 
       <div className="space-y-4 animate-fade-up">
-        <h1 className="font-display font-bold text-4xl">About PolyGuard</h1>
+        <h1 className="font-display font-bold text-4xl">About PolyPharmGuard</h1>
         <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-          PolyGuard is an MRes research project exploring the application of explainable artificial
-          intelligence to polypharmacy risk detection, developed at the University of Greater Manchester
-          under the supervision of Dr Anthony Ojo.
+          PolyPharmGuard is an MRes in Applied Artificial Intelligence dissertation project undertaken by Alfred Bartholomew Sunday at the University of Greater Manchester, Bolton, from September 2025 to September 2026. The project investigates the application of Explainable Artificial Intelligence (XAI) for polypharmacy risk detection, with the goal of improving medication safety, supporting clinical decision-making, and contributing to the development of safer and more effective healthcare solutions. The research was conducted under the supervision of Dr Anthony Ojo.
         </p>
+
+        <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
+          Alfred Bartholomew Sunday is a Software Engineer, Data Scientist, and Healthcare Researcher with an academic background in Chemistry. His research interests include artificial intelligence in healthcare, computational pharmacology, medication safety, and the discovery of novel therapeutic pathways. Driven by a commitment to applying advanced computational approaches to healthcare challenges, he aims to pursue a PhD in Computational Pharmacology, focusing on the use of AI and data-driven methods to accelerate future therapeutic discovery and improve patient care.
+        </p>
+
       </div>
 
       {/* Research problem */}
       <section className="card space-y-4 animate-fade-up" style={{ animationDelay: '60ms' }}>
         <h2 className="font-display font-semibold text-xl">The Research Problem</h2>
         <p className="text-[var(--text-secondary)] leading-relaxed text-sm">
-          Polypharmacy — the concurrent use of five or more medications — affects a growing proportion of
+          Polypharmacy is the concurrent use of five or more medications which affects a growing proportion of
           older adults and individuals with neurodegenerative disorders. While clinical tools such as the
-          Beer's Criteria and STOPP/START guidelines provide rule-based assessment of potentially harmful
-          drug combinations, they are <strong className="text-[var(--text-primary)]">static, clinician-facing, and do not adapt
+          Beer's Criteria and STOPP/START guidelines provide rule based assessment of potentially harmful
+          drug combinations, they are <strong className="text-[var(--text-primary)]">static, clinician facing, and do not adapt
           to individual pharmacological profiles</strong>.
         </p>
         <p className="text-[var(--text-secondary)] leading-relaxed text-sm">
-          PolyGuard addresses this gap by combining machine learning prediction with SHAP-based explainability,
-          anticholinergic burden scoring, and CNS drug risk modelling — delivering transparent, actionable
+          PolyPharmGuard addresses this gap by combining machine learning prediction with SHAP based explainability,
+          anticholinergic burden scoring, and CNS drug risk modelling, delivering transparent, actionable
           risk assessments that support informed conversations between patients and healthcare professionals.
         </p>
       </section>
@@ -101,7 +104,7 @@ export default function About() {
             'All training data is from open, publicly available FDA sources.',
             'Outputs are framed as informational risk flags, not diagnoses.',
             'Clear disclaimers are presented at every interaction point.',
-            'The system is designed to support — not replace — clinical judgment.',
+            'The system is designed to support, not to replace clinical judgment.',
           ].map((point, i) => (
             <li key={i} className="flex items-start gap-2">
               <span className="mt-1 w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />

@@ -35,8 +35,8 @@ export default function Home() {
         </h1>
 
         <p className="max-w-2xl mx-auto text-lg text-[var(--text-secondary)] leading-relaxed">
-          PolyGuard uses explainable AI to detect polypharmacy risk in real time.
-          Enter your medications and receive a transparent, evidence-based risk assessment
+          PolyPharmGuard uses explainable AI to detect polypharmacy risk in real time.
+          Enter your medications and receive a transparent, evidence based risk assessment
           — not just a score, but a reason.
         </p>
 
@@ -65,8 +65,8 @@ export default function Home() {
       {/* Features */}
       <section className="space-y-10">
         <div className="text-center space-y-3">
-          <h2 className="font-display font-bold text-3xl">What PolyGuard analyses</h2>
-          <p className="text-[var(--text-secondary)]">Six evidence-based risk dimensions, assessed simultaneously.</p>
+          <h2 className="font-display font-bold text-3xl">What PolyPharmGuard analyses</h2>
+          <p className="text-[var(--text-secondary)]">Six evidence based risk dimensions, assessed simultaneously.</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -104,7 +104,7 @@ export default function Home() {
 
       {/* Disclaimer */}
       <div className="text-center text-xs text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto pb-4">
-        ⚠️ PolyGuard is a research tool developed as part of an MRes project. It is not a medical device, 
+         PolyPharmGuard is a research tool developed as part of an MRes project. It is not a medical device, 
         does not provide medical advice, and should not replace consultation with a qualified healthcare professional.
         Always speak to your GP or pharmacist about your medications.
       </div>
