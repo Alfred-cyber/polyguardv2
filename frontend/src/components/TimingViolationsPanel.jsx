@@ -8,11 +8,11 @@ const SEV_STYLE = {
 }
 
 const TYPE_LABEL = {
-  MEAL_TIMING_MISMATCH:        '🍽️ Meal Timing',
-  SEPARATION_RULE_BREACH:      '⏱️ Separation Required',
-  NARROW_TI_INTERVAL_WARNING:  '⚠️ Narrow Window Drug',
-  POSTURE_REMINDER:            '🧍 Posture Required',
-  SUBOPTIMAL_TIMING:           '💡 Suboptimal Timing',
+  MEAL_TIMING_MISMATCH:        ' Meal Timing',
+  SEPARATION_RULE_BREACH:      ' Separation Required',
+  NARROW_TI_INTERVAL_WARNING:  ' Narrow Window Drug',
+  POSTURE_REMINDER:            ' Posture Required',
+  SUBOPTIMAL_TIMING:           ' Suboptimal Timing',
 }
 
 export default function TimingViolationsPanel({ violations }) {

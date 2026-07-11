@@ -8,10 +8,10 @@ const URGENCY_STYLE = {
 }
 
 const TYPE_ICON = {
-  interaction:  '⚡',
-  timing:       '⏰',
-  duplication:  '📋',
-  deprescribing:'💊',
+  interaction:  '',
+  timing:       '',
+  duplication:  '',
+  deprescribing:'',
   general:      '🩺',
 }
 
@@ -37,7 +37,7 @@ export default function RecommendationsList({ recommendations }) {
         {sorted.map((rec, i) => {
           const s = URGENCY_STYLE[rec.urgency] || URGENCY_STYLE.routine
           const Icon = s.icon
-          const typeEmoji = TYPE_ICON[rec.type] || '📌'
+          const typeEmoji = TYPE_ICON[rec.type] || ''
 
           return (
             <div key={i} className="rounded-xl p-4 border space-y-2 transition-all duration-200 hover:border-opacity-60"

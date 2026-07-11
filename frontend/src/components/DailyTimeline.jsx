@@ -63,9 +63,9 @@ export default function DailyTimeline({ medications, meals }) {
 
   const mealMarkers = useMemo(() => {
     const markers = []
-    if (meals?.breakfast) markers.push({ label: '🍳', time: meals.breakfast, pct: timeToPercent(meals.breakfast) })
-    if (meals?.lunch)     markers.push({ label: '🥗', time: meals.lunch,     pct: timeToPercent(meals.lunch) })
-    if (meals?.dinner)    markers.push({ label: '🍽️', time: meals.dinner,    pct: timeToPercent(meals.dinner) })
+    if (meals?.breakfast) markers.push({ label: '', time: meals.breakfast, pct: timeToPercent(meals.breakfast) })
+    if (meals?.lunch)     markers.push({ label: '', time: meals.lunch,     pct: timeToPercent(meals.lunch) })
+    if (meals?.dinner)    markers.push({ label: '', time: meals.dinner,    pct: timeToPercent(meals.dinner) })
     return markers
   }, [meals])
 
