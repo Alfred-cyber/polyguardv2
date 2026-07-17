@@ -13,7 +13,7 @@ from knowledge_base import (
 )
 
 
-# ─── Helpers ──────────────────────────────────────────────────────────────────
+#  Helpers ──
 
 def parse_time(t: str) -> Optional[datetime]:
     """Parse 'HH:MM' string into datetime (today as base date)."""
@@ -93,7 +93,7 @@ def get_meal_relation(drug_time: str, meal_time: str) -> str:
         return "after"
 
 
-# ─── Per-Window Analysis ──────────────────────────────────────────────────────
+#  Per-Window Analysis ──
 
 def analyse_windows(medications: list[dict]) -> list[dict]:
     """Group medications by time window and compute per-window risk scores."""
@@ -165,7 +165,7 @@ def analyse_windows(medications: list[dict]) -> list[dict]:
     return sorted(result, key=lambda x: x["risk_score"], reverse=True)
 
 
-# ─── Timing Violations ────────────────────────────────────────────────────────
+#  Timing Violations ─
 
 def check_timing_violations(medications: list[dict], meals: dict) -> list[dict]:
     """Check all timing-based violations: meal alignment, separation rules, narrow TI."""
@@ -178,7 +178,7 @@ def check_timing_violations(medications: list[dict], meals: dict) -> list[dict]:
             continue
 
         for t in times:
-            # ── Meal alignment check ──────────────────────────────────────────
+            # ── Meal alignment check 
             rule = MEAL_RULES.get(name)
             if rule:
                 meal_name, gap = nearest_meal(t, meals)
@@ -223,7 +223,7 @@ def check_timing_violations(medications: list[dict], meals: dict) -> list[dict]:
                             "suggestion": f"Consider moving {med['drug_name']} to the {optimal_time}.",
                         })
 
-            # ── Narrow therapeutic index ──────────────────────────────────────
+            # ── Narrow therapeutic index ──
             nti = NARROW_TI_DRUGS.get(name)
             if nti and nti.get("interval_critical") and len(times) >= 2:
                 for i in range(len(times)):
@@ -244,7 +244,7 @@ def check_timing_violations(medications: list[dict], meals: dict) -> list[dict]:
                                 "suggestion": f"Space {med['drug_name']} doses as evenly as possible across 24 hours.",
                             })
 
-    # ── Separation rules between different drugs ──────────────────────────────
+    # ── Separation rules between different drugs 
     for i, med_a in enumerate(medications):
         for med_b in medications[i + 1:]:
             name_a = normalise(med_a["drug_name"])
@@ -275,7 +275,7 @@ def check_timing_violations(medications: list[dict], meals: dict) -> list[dict]:
     return violations
 
 
-# ─── Interaction Detection with Timing ───────────────────────────────────────
+#  Interaction Detection with Timing 
 
 def check_interactions(medications: list[dict]) -> list[dict]:
     """Detect drug-drug interactions with timing proximity context."""
@@ -320,11 +320,11 @@ def check_interactions(medications: list[dict]) -> list[dict]:
 
                 if closest_pair[0] and closest_pair[1]:
                     if timing_mitigates and min_gap >= min_safe:
-                        timing_note = f"✅ Current gap ({min_gap} min) meets the recommended minimum separation of {min_safe} min. Maintain this schedule."
+                        timing_note = f"Current gap ({min_gap} min) meets the recommended minimum separation of {min_safe} min. Maintain this schedule."
                     elif timing_mitigates and min_gap < min_safe:
-                        timing_note = f"⚠️ Current gap ({min_gap} min) is less than the recommended {min_safe} min. Increase separation."
+                        timing_note = f"Current gap ({min_gap} min) is less than the recommended {min_safe} min. Increase separation."
                     elif not timing_mitigates:
-                        timing_note = f"⚠️ These drugs are scheduled {min_gap} min apart. Timing does NOT reduce this interaction risk."
+                        timing_note = f"These drugs are scheduled {min_gap} min apart. Timing does NOT reduce this interaction risk."
                     else:
                         timing_note = f"Closest doses are {min_gap} min apart."
 
@@ -342,7 +342,7 @@ def check_interactions(medications: list[dict]) -> list[dict]:
     return flags
 
 
-# ─── Therapeutic Duplication ─────────────────────────────────────────────────
+#  Therapeutic Duplication 
 
 def check_therapeutic_duplication(medications: list[dict]) -> list[dict]:
     """Detect drugs from the same class treating the same indication."""
@@ -379,7 +379,7 @@ def check_therapeutic_duplication(medications: list[dict]) -> list[dict]:
     return duplications
 
 
-# ─── 24-Hour Burden Curve ─────────────────────────────────────────────────────
+#  24-Hour Burden Curve ─
 
 def compute_24hr_curve(medications: list[dict]) -> list[dict]:
     """Compute hour-by-hour ACB and sedation burden across the day."""
@@ -404,7 +404,7 @@ def compute_24hr_curve(medications: list[dict]) -> list[dict]:
     return curve
 
 
-# ─── Night-Time Risk ─────────────────────────────────────────────────────────
+#  Night-Time Risk ──
 
 def compute_nighttime_risk(medications: list[dict]) -> dict:
     """Compute dedicated night-time (21:00-06:00) risk assessment."""
