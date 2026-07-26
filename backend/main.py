@@ -51,7 +51,7 @@ def load_model():
     try:
         if os.path.exists(MODEL_PATH):
             model = joblib.load(MODEL_PATH)
-            logger.info(f"✅ Model loaded")
+            logger.info(f" Model loaded")
     except Exception as e:
         logger.warning(f"Model not loaded: {e} — using rule-based fallback")
 
@@ -200,7 +200,7 @@ def build_factors(features: dict, interactions: list, timing_violations: list,
     for itx in interactions:
         if itx["severity"] == "contraindicated":
             factors.append({
-                "icon": "🚫", "severity": "contraindicated",
+                "icon": "", "severity": "contraindicated",
                 "title": f"Contraindicated Combination: {itx['drug_a'].title()} + {itx['drug_b'].title()}",
                 "detail": itx["mechanism"] + " — " + itx["recommendation"],
                 "timing_note": itx.get("timing_note", ""),
@@ -208,7 +208,7 @@ def build_factors(features: dict, interactions: list, timing_violations: list,
             })
         elif itx["severity"] == "major":
             factors.append({
-                "icon": "🚨", "severity": "critical",
+                "icon": "", "severity": "critical",
                 "title": f"Major Interaction: {itx['drug_a'].title()} + {itx['drug_b'].title()}",
                 "detail": itx["mechanism"],
                 "timing_note": itx.get("timing_note", ""),
@@ -218,7 +218,7 @@ def build_factors(features: dict, interactions: list, timing_violations: list,
 
     if features["high_risk_combo"]:
         factors.append({
-            "icon": "⚠️", "severity": "high",
+            "icon": "", "severity": "high",
             "title": "High-Risk Drug Combination Detected",
             "detail": "One or more known dangerous drug pairings identified in your medication list.",
             "shap": 0.25,
@@ -226,7 +226,7 @@ def build_factors(features: dict, interactions: list, timing_violations: list,
 
     if features["acb_total"] >= 3:
         factors.append({
-            "icon": "🧠", "severity": "high",
+            "icon": "", "severity": "high",
             "title": f"High Anticholinergic Burden (ACB = {features['acb_total']})",
             "detail": f"Your total anticholinergic score is {features['acb_total']}. Scores of 3+ are linked to cognitive decline, confusion, falls, and urinary problems.",
             "shap": 0.22,
@@ -234,7 +234,7 @@ def build_factors(features: dict, interactions: list, timing_violations: list,
 
     if nighttime["fall_risk"] == "HIGH":
         factors.append({
-            "icon": "🌙", "severity": "high",
+            "icon": "", "severity": "high",
             "title": f"High Night-Time Fall Risk (Sedation Score: {nighttime['night_sedation_score']})",
             "detail": f"You have {nighttime['drug_count']} sedating medications scheduled at night. This significantly increases risk of falls when getting up during the night.",
             "shap": 0.18,
@@ -242,7 +242,7 @@ def build_factors(features: dict, interactions: list, timing_violations: list,
 
     for v in timing_violations[:3]:
         factors.append({
-            "icon": "⏰", "severity": v["severity"],
+            "icon": "", "severity": v["severity"],
             "title": v["type"].replace("_", " ").title(),
             "detail": v["detail"],
             "suggestion": v.get("suggestion", ""),
@@ -251,7 +251,7 @@ def build_factors(features: dict, interactions: list, timing_violations: list,
 
     for dup in therapeutic_dups:
         factors.append({
-            "icon": "📋", "severity": "moderate",
+            "icon": "", "severity": "moderate",
             "title": f"Therapeutic Duplication: {dup['drug_class']} class",
             "detail": dup["detail"],
             "recommendation": dup["recommendation"],
@@ -260,7 +260,7 @@ def build_factors(features: dict, interactions: list, timing_violations: list,
 
     if features["polypharmacy_flag"]:
         factors.append({
-            "icon": "💊", "severity": "moderate",
+            "icon": "", "severity": "moderate",
             "title": f"Polypharmacy Confirmed ({int(features['num_drugs'])} medications)",
             "detail": "Taking 5 or more medications increases the risk of adverse interactions and side effects.",
             "shap": 0.12,
@@ -268,7 +268,7 @@ def build_factors(features: dict, interactions: list, timing_violations: list,
 
     if features["cns_drug_count"] >= 2:
         factors.append({
-            "icon": "⚡", "severity": "moderate",
+            "icon": "", "severity": "moderate",
             "title": f"Multiple CNS Medications ({int(features['cns_drug_count'])} drugs)",
             "detail": "Multiple central nervous system medications increase risk of sedation, falls, and cognitive impairment.",
             "shap": 0.10,
@@ -276,7 +276,7 @@ def build_factors(features: dict, interactions: list, timing_violations: list,
 
     if not factors:
         factors.append({
-            "icon": "✅", "severity": "none",
+            "icon": "", "severity": "none",
             "title": "No Major Risk Factors Detected",
             "detail": "Based on the medications provided, no significant polypharmacy risk indicators were found. Continue following your prescribed schedule.",
             "shap": 0,
