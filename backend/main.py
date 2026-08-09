@@ -1,9 +1,3 @@
-"""
-PolyGuard v2 — FastAPI Backend
-Full timing-aware polypharmacy risk assessment.
-Author: Alfred Bartholomew Sunday
-"""
-
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator
@@ -16,11 +10,11 @@ import logging
 
 from knowledge_base import (
     ACB_SCORES, SEDATION_SCORES, ALL_CNS_DRUGS, HIGH_RISK_COMBOS,
-    DRUG_ATC_CLASS, CLASS_INDICATIONS, NARROW_TI_DRUGS, MEAL_RULES,
+    DRUG_ATC_CLASS, CLASS_INDICATIONS, NARROW_TI_DRUGS, MEAL_RULES, SEPARATION_RULES,
 )
 from timing_engine import (
     analyse_windows, check_timing_violations, check_interactions,
-    check_therapeutic_duplication, compute_24hr_curve, compute_nighttime_risk,
+    check_therapeutic_duplication, compute_24hr_curve, compute_nighttime_risk, drug_matches,
     normalise,
 )
 
